@@ -1,22 +1,28 @@
 import React from 'react';
-import mastheadImage from '../images/styled-components.png'
-import { Menu, Search } from 'styled-icons/feather';
 import { darken } from 'polished';
+import mastheadImage from './images/styled-components.png';
+import shareFacebookImage from './images/share_facebook.png';
+import shareTwitterImage from './images/share_twitter.png';
+import shareMoreImage from './images/share_more.png';
+import { Menu, Search } from 'styled-icons/feather';
 
 const images = {
-  mastheadImage
+  mastheadImage,
+  shareFacebookImage,
+  shareTwitterImage,
+  shareMoreImage
 };
-
-const breakpoints = [576, 768, 900];
 
 const icons = {
   Menu: <Menu />,
   Search: <Search />
-};
+}
+
+const breakpoints = [576, 768, 900]
 
 const theme = {
   breakpoints: [...breakpoints],
-  space: [0, 4, 8, 16, 32, 128, 256, 512],
+  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   lineHeights: {
     solid: 1,
     title: 1.25,
@@ -25,7 +31,7 @@ const theme = {
   letterSpacings: {
     normal: 'normal',
     tracked: '0.1em',
-    tight: '-.05em',
+    tight: '-0.05em',
     mega: '0.25em'
   },
   borders: [
@@ -61,15 +67,15 @@ const theme = {
   },
   transitions: {
     short: 'all 0.3s ease-out',
-    medium: 'all 0.6s easeout',
+    medium: 'all 0.6s ease-out',
     long: 'all 0.9s ease-out'
   }
-};
+}
 
 const defaults = {
   button: {
-    padding: `${theme.space[1] / 32}em ${(theme.space[3] + 3) / 16}em`,
-    border: theme.borders[2],
+    padding: `${theme.space[2] / 16}em ${(theme.space[3] + 4) / 16}em`,
+    border: theme.borders[3],
     textTransform: 'uppercase',
     letterSpacing: theme.letterSpacings.tracked
   },
@@ -79,22 +85,27 @@ const defaults = {
   masthead: {
     height: '100%',
     width: '100%',
-    background: theme.colors.primary.light,
+    background: theme.colors.primary.main,
     borderBottom: theme.borders[1],
     borderColor: darken(0.1, theme.colors.primary.main)
   },
   text: {
     lineHeight: theme.lineHeights.copy
+  },
+  socialShareButton: {
+    img: {
+      width: '100px',
+      height: 'auto'
+    }
   }
-};
+}
 
 const variants = {
   button: {
     primary: {
       ...defaults.button,
-      color: theme.colors.primary.dark,
-      borderColor: theme.colors.primary.main,
-      background: theme.colors.primary.contrastText
+      color: theme.colors.primary.main,
+      borderColor: theme.colors.primary.main
     },
     contrast: {
       ...defaults.button,
@@ -135,8 +146,18 @@ const variants = {
     contrast: {
       background: theme.colors.primary.contrastText
     }
+  },
+  text: {
+    primary: {
+      ...defaults.text,
+      color: theme.colors.text.primary
+    },
+    contrast: {
+      ...defaults.text,
+      color: theme.colors.primary.contrastText
+    }
   }
-};
+}
 
-const Gray = { ...theme, defaults, variants, images, icons };
+const Gray = { ...theme, defaults, variants, images, icons }
 export { Gray };
